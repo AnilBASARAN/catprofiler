@@ -7,12 +7,12 @@ import initialCats from "./initial-cats";
 const App = () => {
   const [cats, setCats] = useState(initialCats);
   const [age,setAge] = useState(2);
-  const [url,setUrl] = useState("");
+  const [imageUrl,setImageUrl] = useState("");
   const [name,setName] = useState("");
   const [interests,setInterests] = useState("");
   const [errorAge,setErrorAge] = useState("")
 
-console.log({age,url,name,interests});
+
   
   const catItems = cats.map((cat, idx) => <CatItem key={idx} cat={cat} />);
 
@@ -22,6 +22,13 @@ console.log({age,url,name,interests});
       <form
         onSubmit={(e)=>{
           e.preventDefault();
+          const newCat={
+            age,
+            imageUrl,
+            name,
+            interests
+          };
+          setCats([...cats,newCat]);
           
         }}
         className="shadow-lg mt-16 rounded-t-lg overflow-clip">
@@ -64,7 +71,7 @@ console.log({age,url,name,interests});
           required
           min={1}
           value={age}
-          
+          max={25}
           placeholder="age"
           type="number" 
           className=" w-12 shadow-lg" />
@@ -78,8 +85,8 @@ console.log({age,url,name,interests});
            <label htmlFor="url">url</label>
         <input
           required
-          value={url}
-          onChange={(e)=>setUrl(e.target.value)}
+          value={imageUrl}
+          onChange={(e)=>setImageUrl(e.target.value)}
           id="url"
           placeholder="enter an url"
           type="text" 
@@ -96,7 +103,9 @@ console.log({age,url,name,interests});
   value={interests}
   onChange={(e)=>setInterests(e.target.value)}
   id="area"
-  row={3} 
+  row={3}
+  required
+  maxLength={80}
   className="shadow-lg" />    
      </div>   
 
