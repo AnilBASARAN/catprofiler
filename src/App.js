@@ -29,6 +29,10 @@ const App = () => {
             interests
           };
           setCats([...cats,newCat]);
+          setAge(2);
+          setImageUrl("");
+          setName("");
+          setInterests("");
           
         }}
         className="shadow-lg mt-16 rounded-t-lg overflow-clip">
